@@ -1,54 +1,54 @@
 const path = require('path');
-const HWP = require('html-webpack-plugin');
 const webpack = require('webpack');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
-module.exports = {
+var config = {
+    entry: path.resolve(__dirname, './index.js'),
+
     mode: 'development',
-    entry: path.join(__dirname, '/src/index.js'),
-    output: {
-        filename: 'bundle.js',
-        path: path.join(__dirname, '/dist')},
-    module:{
-        rules:[
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader'
-            },
+
+    module: {
+        rules: [
+            { test: /\.js$/, use: "babel-loader", exclude: /node_modules/ },
             {
                 test: /\.scss$/,
-                use: [
-                    "style-loader",
-                    "css-loader",
-                    "sass-loader"
-                ]
+                use: ["style-loader", "css-loader", 'sass-loader?outputStyle=expanded']
             },
             {
                 test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
                 use: {
                     loader: "url-loader",
                     options: {
-                        publicPath: 'dist/assets',
+                        limit: 8192,
+                        publicPath: path.resolve(__dirname, 'dist/assets'),
                         outputPath: 'assets',
                     }
                 }
-            }
+            },
         ]
     },
-    devServer: {
-        contentBase: path.join(__dirname, '/dist'),
-        compress: true,
-        hot: true,
-        port: 9000
+
+    resolve: {
+        extensions: ['.js']
     },
-    plugins:[
-        new HWP(
-            {
-               template: path.join(__dirname,'/public/index.html'),
-               manifest: path.join(__dirname,'/public/manifest.json'),
-               favicon: path.join(__dirname,'/public/favicon.ico')
-            }
-        ),
-        new webpack.HotModuleReplacementPlugin()
-    ]
-}
+
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist')
+    },
+    plugins: []
+};
+
+module.exports = (env, argv) => {
+    if (argv.mode === 'development') {
+        config.plugins = [
+            new BrowserSyncPlugin({
+                host: 'localhost',
+                port: 3000,
+                server: { baseDir: ['./'] }
+            }),
+        ];
+        config.devtool = 'inline-source-map';
+    }
+    return config;
+};

@@ -1,0 +1,118 @@
+@font-face {
+     font-family: 'LobsterTwo-Bold';
+     src: url('../fonts/lobster-two/LobsterTwo-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'LobsterTwo-Regular';
+    src: url('../fonts/lobster-two/LobsterTwo-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('../fonts/Roboto/Roboto-Bold.ttf');
+}
+
+@font-face {
+   font-family: 'Roboto-Medium';
+   src: url('../fonts/Roboto/Roboto-Medium.ttf');
+}
+
+$azul-corpo: #1f2d40;
+$azul-menu: #0e1823;
+$cor-texto: #f5f5f5;
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto-Medium', sans-serif;
+    font-weight: 500;
+    color: $cor-texto;
+    margin: 0;
+    padding: 0;
+    background-color: $azul-corpo;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+#root,
+.caixaApp {
+    width: 100%;
+    height: 100%;
+}
+
+.menu {
+    display:inline-block;
+    width: 25%;
+    height: 100%;
+    padding: 50px 10px;
+    text-align: center;
+    background-color: $azul-menu;
+    vertical-align:top;
+}
+
+.menu h1 {
+    display:inline-block;
+    background: url('../img/logo-tc.png') no-repeat;
+    width:80px;
+    height:80px;
+    text-indent:-999em;
+    vertical-align:top;
+}
+
+.caixaConteudo {
+    display: inline-block;
+    width: 75%;
+    height: 100%;
+    vertical-align:top;
+}
+
+.caixaInputPesquisa {
+    width: 100%;
+    height: 15%;
+    padding: 20px 30px 20px 60px;
+    background-color: $azul-menu + 10;
+}
+
+.input {
+    position: relative;
+    display: inline-block;
+    height: 40px;
+    width: 70%;
+    font-family: 'Roboto-Medium', sans-serif;
+    font-weight: 500;
+    color: #f5f5f5;
+    border-radius: 4px;
+    padding: 0px 10px;
+    margin-right: 20px;
+    vertical-align: top;
+}
+
+.input::placeholder {
+    color: #f5f5f5;
+}
+
+.inputPesquisa {
+    top: 50%;
+    margin-top: -20px;
+    border: 1px solid #f5f5f5;
+    background: transparent;
+}
+
+.caixaSecao {
+    width: 100%;
+    height: 85%;
+}
+
+.caixaImagemBanner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: right;
+}

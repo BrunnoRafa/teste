@@ -1,0 +1,176 @@
+$cor-texto: #f5f5f5;
+
+%spanInlineBlock {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.resultadoPesquisa {
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+}
+
+.caixaInfoCarro {
+    width: 100%;
+    height: 80px;
+    padding: 20px;
+    color: $cor-texto;
+    border-bottom: 1px solid $cor-texto - 140;
+    cursor: pointer;
+    
+    &:hover {
+        background: $cor-texto - 140;
+    }
+}
+
+%tamanhoDivInterna {
+    width: 100%;
+    height: 24px;
+}
+
+.tituloCarroValor {
+    font-family: 'Roboto-Bold', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    @extend %tamanhoDivInterna;   
+
+    & .tituloCarro {
+        width: 70%;
+        @extend %spanInlineBlock;
+    }
+
+    & .valorCarro {
+        width: 30%;
+        text-align: right;
+        @extend %spanInlineBlock;
+    }
+}
+
+.dadosCarro {
+    font-family: 'Roboto-Medium', sans-serif;
+    font-size: 14px;
+    // font-weight: 500;
+    @extend %tamanhoDivInterna;
+
+    & .dadosModelo {
+        width: 70%;
+        @extend %spanInlineBlock;
+    }
+
+    & .listaInfoCarro {
+        list-style: disc;
+
+        & li {
+            display: inline-block;
+            margin-right: 16px;
+        }
+    }
+
+    & .anoCarro {
+        width: 30%;
+        text-align: right;
+        @extend %spanInlineBlock;
+    }
+}
+
+.DetalheCarro {
+    width: 100%;
+    height: 100%;
+    padding: 40px 60px;
+}
+
+.caixaMensagem {
+    height: 30px;
+    width: 100%;
+    padding-left: 10px;
+}
+
+.mensagem {
+    display: block;
+    height: 100%;
+    width: auto;
+    font-family: Roboto-Medium, sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.formularioDetalhe {
+    width: 100%;
+    height: auto;
+
+    & .input {
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid $cor-texto;
+        border-radius: unset;
+        margin-bottom: 35px;
+        background: transparent;
+    }
+
+    & .inputTitulo {
+        width: 100%;
+        font-size: 20px;
+    }
+    
+    & .inputModelo,
+    & .inputAno,
+    & .inputCor,
+    & .inputPreco,
+    & .inputKm {
+        width: 48%;
+        font-size: 20px;
+    }
+    
+    & .inputModelo,
+    & .inputCor {
+        margin-right: 29px;
+    }
+    
+    & .inputAno,
+    & .inputPreco {
+        margin-right: 0px;
+    }
+}
+
+.selectMarcaFabricante {
+    width: 100%;
+    margin: 30px 0px;
+    height: 40px;
+    font-family: 'Roboto-Medium', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: $cor-texto;
+    padding-left: 5px;
+    border-radius: 4px;
+    background: transparent;
+}
+
+.optionsMarca {
+    color: #33333f;
+}
+
+.caixaBotoes {
+    position: relative;
+    width: 100%;
+    height: 60px;
+}
+
+.botaoRemover,
+.botaoCancelar {
+    margin-right: 15px;
+    font-size: 18px;
+    color: $cor-texto;
+    border: 1px solid $cor-texto;
+    background: transparent;
+}
+
+.containerBotaoSalvar {
+    position: absolute;
+    right: 0px;
+}
+
+.botaoSalvar {
+    font-size: 18px;
+}
