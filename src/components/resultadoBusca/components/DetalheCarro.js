@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 
-// import CurrencyFormatter from 'react-currency-formatter';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import * as brandsActions from '../../../store/actions/detalheCarro/brands';
+
 import uuidv4 from 'uuid/v4';
 import axios from 'axios';
 import serialize from 'form-serialize';
+// import CurrencyFormatter from 'react-currency-formatter';
 
 import Botao from '../../Botao';
 
@@ -12,7 +17,7 @@ class DetalheCarro extends Component {
 
     constructor(props) {
         super(props);
-
+        
         this.state = {
             brands: [],
             mensagem: '',
@@ -26,16 +31,18 @@ class DetalheCarro extends Component {
             id: null,
             novoCadastro: false
         }
-
-        axios.get('http://private-amnesiac-f46a73-tradersclubapi.apiary-proxy.com/api/brands')
-            .then(res => {
-                this.setState({
-                    brands: res.data.brands
+        
+        if (this.props.brands.length === 0) {
+            axios.get('http://private-amnesiac-f46a73-tradersclubapi.apiary-proxy.com/api/brands')
+                .then(res => {
+                    res.data.brands.map(brand => {
+                        this.props.addBrands(brand.id, brand.name);
+                    });
                 })
-            })
-            .catch(error => {
-                console.log(error);
-            });
+                .catch(error => {
+                    console.log(error);
+                });
+        }
 
         this.formRef = React.createRef();
 
@@ -200,7 +207,7 @@ class DetalheCarro extends Component {
                     <input type='text' name='year' placeholder="year" value={this.state.year} className='input inputAno' onChange={(e) => this.handleChangeYear(e)} />
                     <select name="brand" value={this.state.brand} onChange={(e) => this.handleChangeSelect(e)} className="selectMarcaFabricante">
                         <option>Selecione</option>
-                        {this.state.brands.map((option) => {
+                        {this.props.brands.map((option) => {
                             return <option key={uuidv4()} className="optionsMarca" value={option.name}>{option.name}</option>;
                         })}
                     </select>
@@ -246,4 +253,11 @@ class DetalheCarro extends Component {
     }
 }
 
-export default DetalheCarro;
+const mapStateToProps = state => ({
+    brands: state.brands,
+});
+
+const mapDispatchToProps = dispatch => 
+    bindActionCreators(brandsActions, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(DetalheCarro);
