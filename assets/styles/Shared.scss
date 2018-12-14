@@ -1,21 +1,21 @@
 @font-face {
      font-family: 'LobsterTwo-Bold';
-     src: url('../fonts/lobster-two/LobsterTwo-Bold.ttf');
+     src: url('../fonts/lobster-two/LobsterTwo-Bold.ttf') format('ttf');
 }
 
 @font-face {
     font-family: 'LobsterTwo-Regular';
-    src: url('../fonts/lobster-two/LobsterTwo-Regular.ttf');
+    src: url('../fonts/lobster-two/LobsterTwo-Regular.ttf') format('ttf');
 }
 
 @font-face {
     font-family: 'Roboto-Bold';
-    src: url('../fonts/Roboto/Roboto-Bold.ttf');
+    src: url('../fonts/Roboto/Roboto-Bold.ttf') format('ttf');
 }
 
 @font-face {
    font-family: 'Roboto-Medium';
-   src: url('../fonts/Roboto/Roboto-Medium.ttf');
+   src: url('../fonts/Roboto/Roboto-Medium.ttf') format('ttf');
 }
 
 $azul-corpo: #1f2d40;
